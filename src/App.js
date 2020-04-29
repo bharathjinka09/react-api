@@ -1,9 +1,9 @@
-import React, { Component } from "react";
-import Header from "./Header";
+import React from "react";
 import PollsList from "./PollsList";
 import NavBar from "./NavBar";
 import About from "./About";
 import Contact from "./Contact";
+import ItemDetail from "./ItemDetail";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -50,8 +50,9 @@ class App extends React.Component {
             <NavBar />
             <Switch>
               <Route path="/" exact component={PollsList} />
-              <Route path="/about" component={About} />
+              <Route path="/about" exact component={About} />
               <Route path="/contact" component={Contact} />
+              <Route path="/about/:id" component={ItemDetail} />
             </Switch>
           </div>
         </Router>

@@ -2,7 +2,7 @@
   text-align: center;
 }
 
-nav{
+nav {
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -11,7 +11,7 @@ nav{
   color: white;
 }
 
-.nav-links{
+.nav-links {
   width: 50%;
   display: flex;
   justify-content: space-around;
@@ -19,8 +19,8 @@ nav{
   list-style: none;
 }
 
-@media(max-width:640px){
-  .nav-links{
+@media (max-width: 640px) {
+  .nav-links {
     width: 100%;
     display: flex;
     justify-content: space-around;
