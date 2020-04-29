@@ -23,6 +23,130 @@ class PollsList extends React.Component {
       });
   }
 
+  postData() {
+    var date = new Date();
+    var datestring =
+      date.getFullYear() +
+      "-" +
+      date.getMonth() +
+      "-" +
+      date.getDate() +
+      "T" +
+      date.getHours() +
+      ":" +
+      date.getMinutes() +
+      ":" +
+      date.getSeconds() +
+      "Z";
+
+    // YYYY-MM-DDThh:mm[
+    // 2019-11-01T04:32:03Z
+
+    try {
+      var data = JSON.stringify({
+        question_text: "Which is your favorite TV show?",
+        pub_date: datestring,
+      });
+
+      var xhr = new XMLHttpRequest();
+
+      xhr.addEventListener("readystatechange", function () {
+        if (this.readyState === 4) {
+          console.log(this.responseText);
+        }
+      });
+
+      xhr.open(
+        "POST",
+        "https://cors-anywhere.herokuapp.com/https://bharathpolls.herokuapp.com/polls/api/question/"
+      );
+      xhr.setRequestHeader("content-type", "application/json");
+      xhr.setRequestHeader("cache-control", "no-cache");
+      // xhr.setRequestHeader("Access-Control-Allow-Origin","*")
+
+      xhr.send(data);
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
+  updateData(id) {
+    var date = new Date();
+    var datestring =
+      date.getFullYear() +
+      "-" +
+      date.getMonth() +
+      "-" +
+      date.getDate() +
+      "T" +
+      date.getHours() +
+      ":" +
+      date.getMinutes() +
+      ":" +
+      date.getSeconds() +
+      "Z";
+
+    // YYYY-MM-DDThh:mm[
+    // 2019-11-01T04:32:03Z
+
+    try {
+      var data = JSON.stringify({
+        url: "http://bharathpolls.herokuapp.com/api/question/" + id + "/",
+        question_text: "Which is your favourite JS framework?",
+        pub_date: datestring,
+      });
+
+      var xhr = new XMLHttpRequest();
+
+      xhr.addEventListener("readystatechange", function () {
+        if (this.readyState === 4) {
+          console.log(this.responseText);
+        }
+      });
+
+      xhr.open(
+        "PUT",
+        "https://cors-anywhere.herokuapp.com/https://bharathpolls.herokuapp.com/polls/api/question/" +
+          id +
+          "/"
+      );
+      xhr.setRequestHeader("content-type", "application/json");
+      xhr.setRequestHeader("cache-control", "no-cache");
+      // xhr.setRequestHeader("Access-Control-Allow-Origin","*")
+
+      xhr.send(data);
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
+  deleteData(id) {
+    try {
+      var xhr = new XMLHttpRequest();
+
+      xhr.addEventListener("readystatechange", function () {
+        if (this.readyState === 4) {
+          console.log(this.responseText);
+        }
+      });
+
+      xhr.open(
+        "DELETE",
+        "https://cors-anywhere.herokuapp.com/https://bharathpolls.herokuapp.com/polls/api/question/" +
+          id +
+          "/"
+      );
+      xhr.setRequestHeader("content-type", "application/json");
+      xhr.setRequestHeader("cache-control", "no-cache");
+
+      xhr.send();
+
+      console.log(xhr);
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
   render() {
     return (
       <>
